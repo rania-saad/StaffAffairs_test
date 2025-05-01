@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StaffAffairs.Core.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -8,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace StaffAffairs.Core.Models
 {
-    public class WorkStatus
+    public class WorkStatus : IEntity
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int ID { get; set; }
+        public int Id { get; set; }
 
         [Required]
         [MaxLength(255)]

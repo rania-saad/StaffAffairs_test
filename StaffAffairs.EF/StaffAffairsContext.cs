@@ -9,7 +9,7 @@ using StaffAffairs.Core.Models;
 
 
 
-namespace  EF
+namespace StaffAffairs.EF
 {
     public  class StaffAffairsContext : DbContext
     {
@@ -27,5 +27,14 @@ namespace  EF
         public DbSet<University> Universities { get; set; }
         public DbSet<WorkStatus> workStatuses { get; set; }
         public DbSet<EntedabType> EntedabTypes { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<University>().HasQueryFilter(u => !u.IsDeleted);
+            modelBuilder.Entity<Faculty>().HasQueryFilter(u => !u.IsDeleted);
+            modelBuilder.Entity<Department>().HasQueryFilter(u => !u.IsDeleted);
+
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }

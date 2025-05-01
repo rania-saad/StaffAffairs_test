@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StaffAffairs.Core.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace StaffAffairs.Core.Models
 {
-    public class Nationality
+    public class Nationality : IEntity
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]

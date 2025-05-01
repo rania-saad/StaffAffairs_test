@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StaffAffairs.Core.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace StaffAffairs.Core.Models
 {
-    public class Faculty
+    public class Faculty : IEntity, ISoftDeletable
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
@@ -27,5 +28,15 @@ namespace StaffAffairs.Core.Models
 
 
         public virtual ICollection<Department> Departments { get; set; } = new List<Department>();
+
+        public void Delete()
+        {
+            IsDeleted = true;
+        }
+
+        public void Restore()
+        {
+            IsDeleted = false;
+        }
     }
 }

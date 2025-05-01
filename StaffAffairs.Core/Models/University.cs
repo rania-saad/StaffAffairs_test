@@ -1,28 +1,57 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿//using StaffAffairs.Core.Interfaces;
+//using System;
+//using System.Collections.Generic;
+//using System.ComponentModel.DataAnnotations;
+//using System.ComponentModel.DataAnnotations.Schema;
+//using System.Linq;
+//using System.Text;
+//using System.Threading.Tasks;
+
+//namespace StaffAffairs.Core.Models
+//{
+//    public class University : IEntity, ISoftDeletable 
+//    {
+//        [Key]
+//        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+//        public int Id { get; set; }
+
+//        [Required]
+//        [MaxLength(255)]
+//        public string UniversityName { get; set; }
+//        public bool? Foreign_University { get; set; } = false;
+
+//        public bool IsDeleted { get; private set; } = false;
+//        //public DateTime? DeletedDate { get; set; }
+//       // public string DeletedBy { get; set; }
+
+
+//    }
+//}
+
+using StaffAffairs.Core.Interfaces;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
-namespace StaffAffairs.Core.Models
+public class University : IEntity, ISoftDeletable
 {
-    public class University
+    [Key]
+    [DatabaseGenerated(DatabaseGeneratedOption.None)]
+    public int Id { get; set; }
+
+    [Required]
+    [MaxLength(255)]
+    public string UniversityName { get; set; }
+    public bool? Foreign_University { get; set; } = false;
+
+    public bool IsDeleted { get; private set; } = false;
+
+    public void Delete()
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int ID { get; set; }
+        IsDeleted = true;
+    }
 
-        [Required]
-        [MaxLength(255)]
-        public string UniversityName { get; set; }
-        public bool? Foreign_University { get; set; } = false;
-
-        public bool IsDeleted { get; set; } = false;
-        //public DateTime? DeletedDate { get; set; }
-       // public string DeletedBy { get; set; }
-
-
+    public void Restore()
+    {
+        IsDeleted = false;
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StaffAffairs.Core.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace StaffAffairs.Core.Models
 {
-    public class Job
+    public class Job : IEntity
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
@@ -16,7 +17,7 @@ namespace StaffAffairs.Core.Models
 
         [Required]
         [MaxLength(255)]
-        public string? JobName { get; set; }
+        public string JobName { get; set; }
         public int? JobPriority { get; set; }
 
         [ForeignKey("JobType")]

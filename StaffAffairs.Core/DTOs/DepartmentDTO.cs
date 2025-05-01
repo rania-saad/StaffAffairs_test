@@ -1,5 +1,4 @@
-﻿using StaffAffairs.Core.Interfaces;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -7,17 +6,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StaffAffairs.Core.Models
+namespace StaffAffairs.Core.DTOs
 {
-    public class Social : IEntity
+    public class DepartmentDTO
     {
+
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int Id { get; set; }
+        public string DepartmentName { get; set; }
 
-        [Required]
-        [MaxLength(255)]
-        public string? SocialName { get; set; }
-
+        [ForeignKey("Faculty")]
+        public int FacultyId { get; set; }
     }
 }

@@ -5,10 +5,11 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using StaffAffairs.Core.Interfaces;
 
 namespace StaffAffairs.Core.Models
 {
-    public class Department
+    public class Department : IEntity, ISoftDeletable
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
@@ -23,5 +24,16 @@ namespace StaffAffairs.Core.Models
         public virtual Faculty? Faculty { get; set; }
 
         public bool IsDeleted { get; set; } = false;
+
+
+        public void Delete()
+        {
+            IsDeleted = true;
+        }
+
+        public void Restore()
+        {
+            IsDeleted = false;
+        }
     }
 }

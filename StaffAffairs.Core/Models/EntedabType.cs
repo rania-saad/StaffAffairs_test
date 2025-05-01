@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StaffAffairs.Core.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace StaffAffairs.Core.Models
 {
-    public class EntedabType
+    public class EntedabType : IEntity
     {
        
         [Key]
@@ -17,7 +18,7 @@ namespace StaffAffairs.Core.Models
 
         [Required]
         [MaxLength(255)]
-        public bool EntedabTypeName { get; set; } = false;
+        public bool EntedabTypevalue{ get; set; } = false;
         public ICollection<Job>? Jobs { get; set; }
     }
 }
